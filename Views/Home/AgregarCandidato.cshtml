@@ -1,0 +1,34 @@
+@{
+    ViewData["Title"] = "AgregarCandidato";
+}
+
+<form method="post" action='@Url.Action("GuardarCandidato")'>
+    <input type="hidden" name="idPartido" value=@ViewBag.Partido>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" name="apellido" placeholder="Apellido" required>
+    </div>
+    <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" name="fechaNacimiento" placeholder="Fecha de Nacimiento" required>
+    </div>
+    <div class="form-group">
+        <label for="foto">Foto</label>
+        <input class="form-control" name="foto" placeholder="Link a la foto" required>
+    </div>
+    <div class="form-group">
+        <label for="postulacion">Postulacion</label>
+        <select class="form-control" name="postulacion" required>
+            <option value="Presidente">Presidente</option>
+            <option value="Vicepresidente">Vicepresidente</option>
+            <option value="Diputado">Diputado</option>
+            <option value="Senador">Senador</option>
+            <option value="Gobernador">Gobernador</option>
+            <option value="Intendente">Intendente</option>
+    </div>
+    <input type="submit" value="Agregar Candidato"/>
+</form>

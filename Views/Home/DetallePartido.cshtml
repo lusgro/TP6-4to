@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "DetallePartido";
+}
+
+<div class="listaPartido">
+    <h1>Partido</h1>
+    <h4>@ViewBag.Partido.nombre</h4>
+    <h3>Sitio Web</h3>
+    <a href=@ViewBag.Partido.sitioWeb target="_blank" class="linkBoton"><button>Ir a la Web</button></a>
+    <h3>Fecha de Fundacion</h3>
+    <p>@ViewBag.Partido.fechaFundacion.ToShortDateString()</p>
+    <h3>Diputados</h3>
+    <p>@(ViewBag.Partido.cantidadDiputados + "/257")</p>
+    <h3>Senadores</h3>
+    <p>@(ViewBag.Partido.cantidadSenadores + "/72")</p>
+
+    <div class="tablaCandidatos">
+        @if (ViewBag.Candidatos == null)
+        {
+            <h1>No hay candidatos</h1>
+        }
+        else
+        {
+            @foreach (var candidato in ViewBag.Candidatos)
+            {
+                <div class="card">
+                    <a href='@Url.Action("VerDetalleCandidato", new { idCandidato = candidato.idCandidato, Idpartido = ViewBag.Partido.idPartido })'>
+                        <img src=@candidato.foto alt=@candidato.apellido class="imgCandidato">
+                        <h2>@(candidato.nombre + " " + candidato.apellido)</h2>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <a href='@Url.Action("AgregarCandidato", new { idPartido = ViewBag.Partido.idPartido })' class="linkBoton"><button>Agregar Candidato</button></a>
+</div>

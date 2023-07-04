@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "DetalleCandidato";
+}
+
+<div class="listaPartido">
+    <h1>Candidato</h1>
+    <h4>@("Por " + ViewBag.Partido.nombre)</h4>
+    <h3>Nombre</h3>
+    <p>@(ViewBag.Candidato.nombre + " " + ViewBag.Candidato.apellido)</h4>
+    <h3>Fecha de Nacimiento</h3>
+    <p>@ViewBag.Candidato.fechaNacimiento.ToShortDateString()</p>
+    <h3>Postulacion</h3>
+    <p>@ViewBag.Candidato.postulacion</p>
+    <h3>@("Volver a " + ViewBag.Partido.nombre)</h3>
+    <a style="padding-bottom: 10px;" href='@Url.Action("VerDetallePartido", new { idPartido = ViewBag.Partido.idPartido })' class="linkBoton"><button>Volver al Partido</button></a>
+    <a href='@Url.Action("EliminarCandidato", new { idCandidato = ViewBag.Candidato.idCandidato ,idPartido = ViewBag.Partido.idPartido })' class="linkBoton"><button>Eliminar Candidato</button></a>
+</div>

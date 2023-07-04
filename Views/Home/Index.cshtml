@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<body>
+    <div class="cards">
+        @foreach (var partido in ViewBag.Partidos)
+        {
+            <div class="card">
+                <a href='@Url.Action("VerDetallePartido", new { idPartido = partido.idPartido })'>
+                    <img src=@partido.logo alt=@partido.nombre>
+                    <h3>@partido.nombre</h3>
+                </a>
+            </div>
+        }
+    </div>
+</body>
